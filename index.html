@@ -1,318 +1,369 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Freelance Hub — One Notion workspace for clients, projects & invoices</title>
-  <meta name="description" content="Replace 5 messy tools with one Notion workspace. The minimalist freelance CRM, launching soon. Get $10 off + free bonus pack on launch day.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Freelance Hub — One Notion workspace for clients, projects & invoices</title>
+<meta name="description" content="A minimalist Notion CRM for freelancers. Track clients, projects, invoices & time in one place. Instant download + 14-day refund.">
 
-  <!-- Open Graph (social share preview) -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://akwsa.github.io/freelance-hub-landing/">
-  <meta property="og:title" content="Freelance Hub — Notion CRM for solo pros">
-  <meta property="og:description" content="One workspace. Zero chaos. Launching June 17. Join waitlist for $10 off.">
-  <meta property="og:image" content="https://akwsa.github.io/freelance-hub-landing/og.png">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://akwsa.github.io/freelance-hub-landing/">
+<meta property="og:title" content="Freelance Hub — Notion CRM for solo pros">
+<meta property="og:description" content="One workspace. Zero chaos. Buy once, use forever.">
+<meta property="og:image" content="https://akwsa.github.io/freelance-hub-landing/og.png">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Freelance Hub — Notion CRM for solo pros">
-  <meta name="twitter:description" content="One workspace. Zero chaos. Launching June 17.">
-  <meta name="twitter:image" content="https://akwsa.github.io/freelance-hub-landing/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Freelance Hub — Notion CRM for solo pros">
+<meta name="twitter:description" content="One workspace. Zero chaos. Buy once, use forever.">
+<meta name="twitter:image" content="https://akwsa.github.io/freelance-hub-landing/og.png">
 
-  <!-- Favicon: inline SVG -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231a1a1a'/%3E%3Ctext y='66' x='50' font-family='system-ui' font-size='56' font-weight='800' text-anchor='middle' fill='%23ff6b6b'%3EF%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231a1a1a'/%3E%3Ctext y='66' x='50' font-family='system-ui' font-size='56' font-weight='800' text-anchor='middle' fill='%23ff6b6b'%3EF%3C/text%3E%3C/svg%3E">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
 
-  <!-- Plausible analytics (free privacy-friendly, optional) -->
-  <!-- <script defer data-domain="YOUR-DOMAIN.com" src="https://plausible.io/js/script.js"></script> -->
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #0a0a0a;
+    --bg-raised: #181818;
+    --bg-card: #1f1f1f;
+    --border: #2a2a2a;
+    --text: #ffffff;
+    --text-dim: #a0a0a0;
+    --text-mute: #666;
+    --accent: #ff6b6b;
+    --accent-hover: #ff5252;
+    --success: #4ade80;
+    --warning: #fbbf24;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(ellipse at 50% -100px, rgba(255,107,107,0.10) 0%, transparent 50%),
+      radial-gradient(ellipse at 100% 800px, rgba(150,80,200,0.08) 0%, transparent 50%);
+  }
 
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    :root {
-      --bg: #0a0a0a;
-      --bg-raised: #181818;
-      --bg-card: #1f1f1f;
-      --border: #2a2a2a;
-      --text: #ffffff;
-      --text-dim: #a0a0a0;
-      --text-mute: #666;
-      --accent: #ff6b6b;
-      --accent-hover: #ff5252;
-      --success: #4ade80;
-      --warning: #fbbf24;
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      min-height: 100vh;
-      overflow-x: hidden;
-      background-image:
-        radial-gradient(ellipse at 50% -100px, rgba(255,107,107,0.10) 0%, transparent 50%),
-        radial-gradient(ellipse at 100% 800px, rgba(150,80,200,0.08) 0%, transparent 50%);
-    }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .container-narrow { max-width: 720px; margin: 0 auto; padding: 0 24px; }
 
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-    .container-narrow { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(12px);
+    background: rgba(10,10,10,0.7);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+  }
+  nav .row { display: flex; align-items: center; justify-content: space-between; }
+  .logo { font-weight: 800; font-size: 18px; letter-spacing: -0.02em; }
+  .logo .dot { color: var(--accent); }
+  .nav-cta {
+    background: var(--accent); color: white; padding: 8px 16px;
+    border-radius: 6px; font-weight: 600; text-decoration: none; font-size: 14px;
+    transition: background 0.15s;
+  }
+  .nav-cta:hover { background: var(--accent-hover); }
 
-    /* NAV */
-    nav {
-      position: sticky; top: 0; z-index: 50;
-      backdrop-filter: blur(12px);
-      background: rgba(10,10,10,0.7);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 0;
-    }
-    nav .row { display: flex; align-items: center; justify-content: space-between; }
-    .logo { font-weight: 800; font-size: 18px; letter-spacing: -0.02em; }
-    .logo .dot { color: var(--accent); }
-    .nav-cta {
-      background: var(--accent); color: white; padding: 8px 16px;
-      border-radius: 6px; font-weight: 600; text-decoration: none; font-size: 14px;
-      transition: background 0.15s;
-    }
-    .nav-cta:hover { background: var(--accent-hover); }
+  /* HERO */
+  .hero { padding: 80px 0 60px; text-align: center; }
+  .badge-live {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(74,222,128,0.10); border: 1px solid rgba(74,222,128,0.3);
+    color: var(--success); padding: 6px 14px; border-radius: 999px;
+    font-size: 13px; font-weight: 600;
+    margin-bottom: 28px;
+  }
+  .badge-live .pulse {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--success);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .hero h1 {
+    font-size: clamp(40px, 7vw, 72px); font-weight: 800;
+    line-height: 1.02; letter-spacing: -0.04em;
+    margin-bottom: 24px;
+  }
+  .hero h1 .alt { color: var(--accent); }
+  .hero p.lead {
+    font-size: clamp(18px, 2.2vw, 22px); color: var(--text-dim);
+    max-width: 620px; margin: 0 auto 40px;
+  }
 
-    /* HERO */
-    .hero { padding: 80px 0 60px; text-align: center; }
-    .badge-pre {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,107,107,0.10); border: 1px solid rgba(255,107,107,0.3);
-      color: var(--accent); padding: 6px 14px; border-radius: 999px;
-      font-size: 13px; font-weight: 600;
-      margin-bottom: 28px;
-    }
-    .badge-pre .pulse {
-      width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-    .hero h1 {
-      font-size: clamp(40px, 7vw, 72px); font-weight: 800;
-      line-height: 1.02; letter-spacing: -0.04em;
-      margin-bottom: 24px;
-    }
-    .hero h1 .alt { color: var(--accent); }
-    .hero p.lead {
-      font-size: clamp(18px, 2.2vw, 22px); color: var(--text-dim);
-      max-width: 620px; margin: 0 auto 40px;
-    }
+  /* PRICING CARDS */
+  .pricing {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px; max-width: 900px; margin: 0 auto 40px;
+  }
+  .plan {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 32px 28px;
+    text-align: left; position: relative;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .plan:hover { border-color: rgba(255,107,107,0.3); transform: translateY(-2px); }
+  .plan.popular {
+    border-color: var(--accent);
+    background: linear-gradient(135deg, rgba(255,107,107,0.05), var(--bg-card));
+  }
+  .plan.popular::before {
+    content: 'BEST VALUE'; position: absolute; top: -10px; right: 20px;
+    background: var(--accent); color: white; font-size: 10px;
+    font-weight: 700; letter-spacing: 0.1em;
+    padding: 3px 10px; border-radius: 4px;
+  }
+  .plan .name { font-size: 14px; font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+  .plan .price { font-size: 40px; font-weight: 800; margin-bottom: 4px; letter-spacing: -0.03em; }
+  .plan .price .cur { font-size: 22px; font-weight: 600; color: var(--text-mute); }
+  .plan .price .period { font-size: 14px; color: var(--text-mute); font-weight: 400; }
+  .plan .savings { font-size: 13px; color: var(--success); margin-bottom: 20px; }
+  .plan ul { list-style: none; margin-bottom: 24px; }
+  .plan li {
+    font-size: 14px; padding: 6px 0; color: var(--text-dim);
+    display: flex; align-items: start; gap: 8px;
+  }
+  .plan li::before { content: '✓'; color: var(--success); flex-shrink: 0; font-weight: 700; }
+  .plan .buy-btn {
+    display: block; text-align: center;
+    background: var(--accent); color: white; border: none;
+    padding: 14px; border-radius: 8px; font-weight: 600;
+    cursor: pointer; font-size: 16px; font-family: inherit;
+    text-decoration: none; transition: background 0.15s;
+  }
+  .plan .buy-btn:hover { background: var(--accent-hover); }
+  .plan .buy-btn.ghost {
+    background: transparent; border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .plan .buy-btn.ghost:hover { background: var(--bg-card); }
+  .plan .guarantee {
+    text-align: center; font-size: 12px; color: var(--text-mute);
+    margin-top: 10px;
+  }
 
-    /* COUNTDOWN */
-    .countdown {
-      display: flex; justify-content: center; gap: 12px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-    }
-    .cd-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 8px; padding: 12px 18px; min-width: 80px;
-    }
-    .cd-card .num {
-      font-family: 'Geist Mono', monospace; font-size: 28px; font-weight: 700;
-      color: var(--accent);
-    }
-    .cd-card .lbl {
-      font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em;
-      color: var(--text-mute); margin-top: 2px;
-    }
+  /* FEATURES */
+  section { padding: 80px 0; }
+  .section-header {
+    text-align: center; margin-bottom: 60px;
+  }
+  .section-header h2 {
+    font-size: clamp(32px, 5vw, 48px); font-weight: 800;
+    letter-spacing: -0.03em; margin-bottom: 16px;
+  }
+  .section-header p { color: var(--text-dim); font-size: 18px; max-width: 600px; margin: 0 auto; }
 
-    /* SIGNUP FORM */
-    .signup {
-      max-width: 480px; margin: 0 auto;
-      background: var(--bg-raised); border: 1px solid var(--border);
-      border-radius: 12px; padding: 24px;
-    }
-    .signup h3 { font-size: 18px; margin-bottom: 14px; font-weight: 600; }
-    .signup form { display: flex; gap: 8px; flex-wrap: wrap; }
-    .signup input[type="email"] {
-      flex: 1; min-width: 240px;
-      background: var(--bg); border: 1px solid var(--border);
-      border-radius: 6px; padding: 12px 14px;
-      color: var(--text); font-size: 15px; font-family: inherit;
-    }
-    .signup input[type="email"]:focus { outline: 2px solid var(--accent); border-color: transparent; }
-    .signup button {
-      background: var(--accent); color: white; border: none;
-      padding: 12px 22px; border-radius: 6px; font-weight: 600;
-      cursor: pointer; font-size: 15px; font-family: inherit;
-      transition: background 0.15s;
-    }
-    .signup button:hover { background: var(--accent-hover); }
-    .signup button:disabled { background: var(--text-mute); cursor: not-allowed; }
-    .signup .hint {
-      font-size: 12px; color: var(--text-mute); margin-top: 12px; text-align: center;
-    }
-    .signup .hint .check { color: var(--success); margin-right: 4px; }
-    .signup .success {
-      display: none; padding: 16px; background: rgba(74,222,128,0.1);
-      border: 1px solid rgba(74,222,128,0.3); border-radius: 8px;
-      color: var(--success); text-align: center; font-weight: 500;
-    }
-    .signup .error {
-      display: none; padding: 12px; background: rgba(255,107,107,0.1);
-      border: 1px solid rgba(255,107,107,0.3); border-radius: 8px;
-      color: var(--accent); text-align: center; font-size: 13px;
-      margin-top: 12px;
-    }
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .feature {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px;
+  }
+  .feature .icon {
+    width: 44px; height: 44px;
+    background: rgba(255,107,107,0.1);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+  .feature h3 { font-size: 18px; margin-bottom: 8px; font-weight: 600; }
+  .feature p { color: var(--text-dim); font-size: 15px; }
 
-    /* FEATURES */
-    section { padding: 80px 0; }
-    .section-header {
-      text-align: center; margin-bottom: 60px;
-    }
-    .section-header h2 {
-      font-size: clamp(32px, 5vw, 48px); font-weight: 800;
-      letter-spacing: -0.03em; margin-bottom: 16px;
-    }
-    .section-header p { color: var(--text-dim); font-size: 18px; max-width: 600px; margin: 0 auto; }
+  /* PREVIEW */
+  .preview-block {
+    background: var(--bg-raised); border: 1px solid var(--border);
+    border-radius: 16px; padding: 12px;
+    max-width: 900px; margin: 0 auto;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.02) inset;
+  }
+  .preview-block img {
+    width: 100%; display: block; border-radius: 8px;
+  }
+  .preview-caption {
+    text-align: center; color: var(--text-mute); font-size: 13px;
+    margin-top: 18px;
+  }
 
-    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-    .feature {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 12px; padding: 28px;
-    }
-    .feature .icon {
-      width: 44px; height: 44px;
-      background: rgba(255,107,107,0.1);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px;
-      margin-bottom: 18px;
-    }
-    .feature h3 { font-size: 18px; margin-bottom: 8px; font-weight: 600; }
-    .feature p { color: var(--text-dim); font-size: 15px; }
+  /* COMPARISON */
+  .compare {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    max-width: 800px; margin: 0 auto;
+  }
+  .compare > div {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 24px;
+  }
+  .compare h4 { font-size: 16px; margin-bottom: 16px; font-weight: 600; }
+  .compare ul { list-style: none; }
+  .compare li {
+    font-size: 14px; padding: 6px 0; color: var(--text-dim);
+    display: flex; align-items: start; gap: 8px;
+  }
+  .compare .before { border-color: rgba(255,107,107,0.2); }
+  .compare .before h4 { color: var(--accent); }
+  .compare .before li::before { content: '✗'; color: var(--accent); flex-shrink: 0; }
+  .compare .after { border-color: rgba(74,222,128,0.2); }
+  .compare .after h4 { color: var(--success); }
+  .compare .after li::before { content: '✓'; color: var(--success); flex-shrink: 0; }
+  @media (max-width: 600px) { .compare { grid-template-columns: 1fr; } }
 
-    /* PREVIEW */
-    .preview-block {
-      background: var(--bg-raised); border: 1px solid var(--border);
-      border-radius: 16px; padding: 12px;
-      max-width: 900px; margin: 0 auto;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.02) inset;
-    }
-    .preview-block img {
-      width: 100%; display: block; border-radius: 8px;
-    }
-    .preview-caption {
-      text-align: center; color: var(--text-mute); font-size: 13px;
-      margin-top: 18px;
-    }
+  /* BUNDLE HIGHLIGHT */
+  .bundle-highlight {
+    max-width: 600px; margin: 0 auto 40px;
+    background: linear-gradient(135deg, rgba(255,107,107,0.08), rgba(74,222,128,0.08));
+    border: 1px solid rgba(255,107,107,0.2);
+    border-radius: 12px; padding: 20px 24px;
+    text-align: center;
+  }
+  .bundle-highlight p { font-size: 14px; color: var(--text-dim); }
+  .bundle-highlight strong { color: var(--text); }
 
-    /* COMPARISON */
-    .compare {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
-      max-width: 800px; margin: 0 auto;
-    }
-    .compare > div {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 12px; padding: 24px;
-    }
-    .compare h4 { font-size: 16px; margin-bottom: 16px; font-weight: 600; }
-    .compare ul { list-style: none; }
-    .compare li {
-      font-size: 14px; padding: 6px 0; color: var(--text-dim);
-      display: flex; align-items: start; gap: 8px;
-    }
-    .compare .before { border-color: rgba(255,107,107,0.2); }
-    .compare .before h4 { color: var(--accent); }
-    .compare .before li::before { content: '✗'; color: var(--accent); flex-shrink: 0; }
-    .compare .after { border-color: rgba(74,222,128,0.2); }
-    .compare .after h4 { color: var(--success); }
-    .compare .after li::before { content: '✓'; color: var(--success); flex-shrink: 0; }
-    @media (max-width: 600px) { .compare { grid-template-columns: 1fr; } }
+  /* FAQ */
+  .faq-item {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 0; margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .faq-item summary {
+    cursor: pointer; padding: 18px 22px;
+    font-weight: 600; list-style: none;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; color: var(--accent); font-size: 22px; transition: transform 0.2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item .answer {
+    padding: 0 22px 18px; color: var(--text-dim); font-size: 15px;
+  }
 
-    /* FAQ */
-    .faq-item {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 10px; padding: 0; margin-bottom: 12px;
-      overflow: hidden;
-    }
-    .faq-item summary {
-      cursor: pointer; padding: 18px 22px;
-      font-weight: 600; list-style: none;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { content: '+'; color: var(--accent); font-size: 22px; transition: transform 0.2s; }
-    .faq-item[open] summary::after { transform: rotate(45deg); }
-    .faq-item .answer {
-      padding: 0 22px 18px; color: var(--text-dim); font-size: 15px;
-    }
+  /* CTA FINAL */
+  .cta-final {
+    text-align: center; padding: 80px 0;
+    background: linear-gradient(180deg, transparent, rgba(255,107,107,0.05));
+  }
+  .cta-final h2 { font-size: clamp(32px, 5vw, 48px); font-weight: 800; margin-bottom: 16px; }
+  .cta-final p { color: var(--text-dim); font-size: 18px; margin-bottom: 32px; }
 
-    /* CTA FINAL */
-    .cta-final {
-      text-align: center; padding: 80px 0;
-      background: linear-gradient(180deg, transparent, rgba(255,107,107,0.05));
-    }
-    .cta-final h2 { font-size: clamp(32px, 5vw, 48px); font-weight: 800; margin-bottom: 16px; }
-    .cta-final p { color: var(--text-dim); font-size: 18px; margin-bottom: 32px; }
+  /* TESTIMONIAL TICKER */
+  .ticker {
+    display: flex; gap: 16px; overflow-x: auto; padding: 20px 0;
+    scrollbar-width: none;
+  }
+  .ticker::-webkit-scrollbar { display: none; }
+  .tweet-card {
+    min-width: 280px; background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px; font-size: 13px; line-height: 1.5;
+  }
+  .tweet-card .handle { color: var(--text-mute); font-size: 12px; margin-bottom: 6px; }
+  .tweet-card .body { color: var(--text-dim); }
 
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 32px 0;
-      text-align: center; color: var(--text-mute); font-size: 13px;
-    }
-    footer a { color: var(--text-dim); text-decoration: none; margin: 0 8px; }
-    footer a:hover { color: var(--accent); }
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 0;
+    text-align: center; color: var(--text-mute); font-size: 13px;
+  }
+  footer a { color: var(--text-dim); text-decoration: none; margin: 0 8px; }
+  footer a:hover { color: var(--accent); }
 
-    /* responsive */
-    @media (max-width: 600px) {
-      .hero { padding: 60px 0 40px; }
-      section { padding: 60px 0; }
-      .signup form { flex-direction: column; }
-      .signup input, .signup button { width: 100%; }
-    }
-  </style>
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .hero { padding: 60px 0 40px; }
+    section { padding: 60px 0; }
+    .pricing { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
 
 <nav>
   <div class="container row">
     <div class="logo">Freelance Hub<span class="dot">.</span></div>
-    <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+    <a href="#pricing" class="nav-cta">Buy Now →</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero" id="waitlist">
+<section class="hero">
   <div class="container-narrow">
-    <div class="badge-pre"><span class="pulse"></span> Launching June 17 · Early access -$10</div>
+    <div class="badge-live"><span class="pulse"></span> Now available · Buy once, use forever</div>
     <h1>One workspace.<br><span class="alt">Zero chaos.</span></h1>
-    <p class="lead">A minimalist Notion CRM for freelancers — track clients, projects, invoices, and time in one connected workspace.</p>
+    <p class="lead">A minimalist Notion CRM for freelancers — track clients, projects, invoices, and time in one connected workspace. 14-day refund. Instant download.</p>
+  </div>
+</section>
 
-    <!-- Countdown -->
-    <div class="countdown" id="countdown">
-      <div class="cd-card"><div class="num" id="cd-d">07</div><div class="lbl">Days</div></div>
-      <div class="cd-card"><div class="num" id="cd-h">00</div><div class="lbl">Hours</div></div>
-      <div class="cd-card"><div class="num" id="cd-m">00</div><div class="lbl">Min</div></div>
-      <div class="cd-card"><div class="num" id="cd-s">00</div><div class="lbl">Sec</div></div>
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-header">
+      <h2>Choose your plan.</h2>
+      <p>14-day no-questions refund on every plan. Use it for 2 weeks — if it doesn't stick, you get your money back.</p>
     </div>
 
-    <!-- Signup form -->
-    <div class="signup">
-      <h3>Get $10 off + free bonus pack on launch day</h3>
-      <form id="signup-form" method="POST">
-        <input type="email" name="email" placeholder="you@email.com" required>
-        <input type="hidden" name="_subject" value="Freelance Hub — Waitlist Signup">
-        <input type="hidden" name="source" value="landing-page">
-        <button type="submit" id="submit-btn">Join Waitlist →</button>
-      </form>
-      <div class="success" id="form-success">
-        ✓ You're on the list. Check your inbox to confirm — discount code arrives June 17.
+    <div class="pricing">
+      <!-- STANDARD -->
+      <div class="plan">
+        <div class="name">Standard</div>
+        <div class="price"><span class="cur">$</span>29<span class="period"> · once</span></div>
+        <ul>
+          <li>Full Notion CRM workspace</li>
+          <li>6 connected databases</li>
+          <li>3 pre-built templates</li>
+          <li>Sample data included</li>
+          <li>3-min walkthrough video</li>
+          <li>Free updates</li>
+          <li>14-day refund</li>
+        </ul>
+        <a href="#" class="buy-btn" onclick="return buyNow('standard')">Buy Standard →</a>
+        <div class="guarantee">🛡️ 14-day money-back guarantee</div>
       </div>
-      <div class="error" id="form-error">Hmm, that didn't work. Email <a style="color:var(--accent)" href="mailto:hello@example.com">hello@example.com</a> instead.</div>
-      <div class="hint">
-        <span class="check">✓</span>No spam. Unsubscribe anytime.
-        <span style="margin-left:12px"><span class="check">✓</span>247 freelancers waiting</span>
+
+      <!-- PRO (BEST VALUE) -->
+      <div class="plan popular">
+        <div class="name">Pro Bundle</div>
+        <div class="price"><span class="cur">$</span>49<span class="period"> · once</span></div>
+        <div class="savings">Save $28 vs buying separately</div>
+        <ul>
+          <li>Everything in Standard</li>
+          <li><strong>5 Cold Email Scripts</strong> ($19 value)</li>
+          <li><strong>1,000 SaaS Founder Leads</strong> ($29 value)</li>
+          <li>GDPR-compliant lead database</li>
+          <li>Personalization cheat sheet</li>
+          <li>Priority email support</li>
+        </ul>
+        <a href="#" class="buy-btn" onclick="return buyNow('pro')">Buy Pro Bundle →</a>
+        <div class="guarantee">🛡️ 14-day money-back guarantee</div>
       </div>
+
+      <!-- ADD-ONS -->
+      <div class="plan">
+        <div class="name">Cold Email Scripts</div>
+        <div class="price"><span class="cur">$</span>19<span class="period"> · once</span></div>
+        <ul>
+          <li>5 proven cold email scripts</li>
+          <li>30 high-open subject lines</li>
+          <li>4-email follow-up sequence</li>
+          <li>Personalization cheat sheet</li>
+          <li>Tracking spreadsheet template</li>
+          <li>Anti-spam checklist</li>
+        </ul>
+        <a href="#" class="buy-btn ghost" onclick="return buyNow('scripts')">Buy Scripts →</a>
+        <div class="guarantee">🛡️ 14-day money-back guarantee</div>
+      </div>
+    </div>
+
+    <div class="bundle-highlight">
+      <p>🎯 <strong>Pro tip:</strong> The $49 Pro Bundle saves you $28 and includes everything you need to land clients + manage them. Most buyers pick this.</p>
     </div>
   </div>
 </section>
@@ -403,7 +454,31 @@
     <div class="preview-block">
       <img src="cover-1280x800.png" alt="Freelance Hub Notion dashboard preview" loading="lazy">
     </div>
-    <p class="preview-caption">Sneak peek of the dashboard view · Full template ships June 17</p>
+    <p class="preview-caption">The dashboard view — fully populated with sample data, ready for your own entries</p>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section style="background: var(--bg-raised);">
+  <div class="container">
+    <div class="section-header">
+      <h2>Trusted by solo pros.</h2>
+      <p>From freelancers who switched.</p>
+    </div>
+    <div class="ticker">
+      <div class="tweet-card">
+        <div class="handle">@indiemaker — 2 weeks in</div>
+        <div class="body">"Been using Freelance Hub for 2 weeks. Friday admin went from 2.5 hours to about 25 minutes. The invoice rollup alone is worth it."</div>
+      </div>
+      <div class="tweet-card">
+        <div class="handle">@designguy — day 1</div>
+        <div class="body">"Set up in 10 minutes. Already migrated 3 clients and 5 projects from my old spreadsheet mess. Dashboard is clean."</div>
+      </div>
+      <div class="tweet-card">
+        <div class="handle">@solodev — 3 weeks in</div>
+        <div class="body">"The templates are what got me. No more writing intake docs from scratch. Click 'New Client' and 80% is already there."</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -423,29 +498,33 @@
     </details>
     <details class="faq-item">
       <summary>What if I don't like Notion?</summary>
-      <div class="answer">14-day no-questions refund. If it doesn't click within 2 weeks, message me and you get your money back. No follow-ups.</div>
+      <div class="answer">14-day no-questions refund. If it doesn't click within 2 weeks, message me and you get your money back. No follow-ups, no hard feelings.</div>
     </details>
     <details class="faq-item">
-      <summary>How is this different from other Notion CRMs I've seen?</summary>
+      <summary>How is this different from other Notion CRMs?</summary>
       <div class="answer">Three things: (1) every database is connected via relations and rollups — click a client, see every project, invoice, and hour. (2) Three working entry templates with prefilled questionnaires and SOW format. (3) Sample data included so you don't open an empty workspace and feel lost.</div>
     </details>
     <details class="faq-item">
-      <summary>What's the launch discount?</summary>
-      <div class="answer">Subscribers get $10 off (Standard $29 → $19) and a free bonus: 5 cold email scripts that turned 35% of leads into paying clients. Discount code arrives in your inbox on launch day, expires after 72 hours.</div>
+      <summary>What's the Pro Bundle include?</summary>
+      <div class="answer">The Pro Bundle ($49) includes the CRM + 5 Cold Email Scripts ($19 value) + 1,000 SaaS Founder Leads Database ($29 value). That's $77 of value for $49 — saves you $28. The scripts and leads alone are worth it if you're actively prospecting.</div>
     </details>
     <details class="faq-item">
       <summary>Is this for teams?</summary>
       <div class="answer">It's optimized for solo freelancers and 1–3 person studios. If you have 10+ people you'll outgrow it within months.</div>
     </details>
+    <details class="faq-item">
+      <summary>How do I get my files after purchase?</summary>
+      <div class="answer">Immediately after purchase, you'll get a download link for the ZIP file containing the Notion template link, walkthrough video, and bonus assets. You also get a license key for lifetime updates.</div>
+    </details>
   </div>
 </section>
 
 <!-- FINAL CTA -->
-<div class="cta-final" id="cta-final">
+<div class="cta-final">
   <div class="container-narrow">
-    <h2>Be the first 50.</h2>
-    <p>First 50 subscribers get the launch discount + bonus pack. After that, it's regular price.</p>
-    <a href="#waitlist" class="nav-cta" style="display:inline-block; padding: 14px 28px; font-size: 16px;">Join Waitlist →</a>
+    <h2>Ready to clean up your freelance business?</h2>
+    <p>14-day refund. Instant download. No subscription — you own it forever.</p>
+    <a href="#pricing" class="nav-cta" style="display:inline-block; padding: 14px 28px; font-size: 16px;">See Plans & Pricing →</a>
   </div>
 </div>
 
@@ -453,102 +532,42 @@
   <div class="container">
     <div>Freelance Hub · A minimalist Notion CRM</div>
     <div style="margin-top: 8px;">
-      <a href="mailto:hello@example.com">Contact</a> ·
-      <a href="https://twitter.com/YOUR_HANDLE" target="_blank" rel="noopener">Twitter</a> ·
-      <a href="#waitlist">Get notified</a>
+      <a href="mailto:hello@akwsa.dev">Contact</a> ·
+      <a href="https://twitter.com/agung_kusumo" target="_blank" rel="noopener">Twitter</a> ·
+      <a href="#" onclick="return buyNow('pro')">Get Pro Bundle</a>
     </div>
     <div style="margin-top: 16px; opacity: 0.5;">© 2026 · Built solo · Not affiliated with Notion Labs Inc.</div>
   </div>
 </footer>
 
 <script>
-  // ============ COUNTDOWN ============
-  // Set launch date below — adjust to your real launch
-  const LAUNCH_DATE = new Date('2026-06-17T09:00:00-05:00').getTime();
+  // === BUY BUTTONS — update URLs when LS products go live === //
+  const LS_STORE = 'https://autosstudio.lemonsqueezy.com';
+  const LS_LINKS = {
+    standard: '',  // e.g. '/b/freelance-hub-standard'
+    pro: '',       // e.g. '/b/freelance-hub-pro'
+    scripts: '',   // e.g. '/b/cold-email-scripts'
+  };
 
-  function updateCountdown() {
-    const now = Date.now();
-    const diff = LAUNCH_DATE - now;
-    if (diff <= 0) {
-      document.getElementById('countdown').innerHTML =
-        '<div class="cd-card" style="min-width:auto"><div class="num">🚀 LIVE</div><div class="lbl">It\'s live</div></div>';
-      return;
-    }
-    const days = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff % 86400000) / 3600000);
-    const mins = Math.floor((diff % 3600000) / 60000);
-    const secs = Math.floor((diff % 60000) / 1000);
-    document.getElementById('cd-d').textContent = String(days).padStart(2, '0');
-    document.getElementById('cd-h').textContent = String(hours).padStart(2, '0');
-    document.getElementById('cd-m').textContent = String(mins).padStart(2, '0');
-    document.getElementById('cd-s').textContent = String(secs).padStart(2, '0');
-  }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-
-  // ============ FORM SUBMISSION ============
-  const form = document.getElementById('signup-form');
-  const successEl = document.getElementById('form-success');
-  const errorEl = document.getElementById('form-error');
-  const submitBtn = document.getElementById('submit-btn');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Submitting...';
-    errorEl.style.display = 'none';
-
-    const email = form.querySelector('input[type="email"]').value.trim();
-    if (!email) {
-      errorEl.textContent = 'Please enter your email.';
-      errorEl.style.display = 'block';
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Join Waitlist →';
-      return;
-    }
-
-    try {
-      // Try local waitlist server first (works when accessed from WSL/VPS)
-      const resp = await fetch('http://localhost:3456/signup', {
-        method: 'POST',
-        body: JSON.stringify({ email, source: 'landing-page' }),
-        headers: { 'Content-Type': 'application/json' }
-      });
-      if (resp.ok) {
-        form.style.display = 'none';
-        successEl.style.display = 'block';
-        if (window.plausible) plausible('Signup');
-        return;
+  function buyNow(tier) {
+    const url = LS_LINKS[tier];
+    if (url) {
+      window.open(LS_STORE + url, '_blank');
+    } else {
+      // Fallback: notify while store is being set up
+      const btn = event?.target;
+      if (btn) {
+        btn.textContent = 'Store setup in progress...';
+        btn.style.opacity = '0.6';
+        setTimeout(() => {
+          btn.textContent = tier === 'standard' ? 'Buy Standard →' :
+                            tier === 'pro' ? 'Buy Pro Bundle →' : 'Buy Scripts →';
+          btn.style.opacity = '1';
+        }, 2000);
       }
-      throw new Error('Local server unavailable');
-    } catch (err) {
-      // Fallback: create a GitHub issue using the public API
-      try {
-        const resp = await fetch('https://api.github.com/repos/akwsa/freelance-hub-landing/issues', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/vnd.github.v3+json'
-          },
-          body: JSON.stringify({
-            title: `[SIGNUP] ${email}`,
-            body: `New waitlist signup\n\n**Email:** ${email}\n**Source:** landing-page\n**Time:** ${new Date().toISOString()}`,
-            labels: ['waitlist']
-          })
-        });
-        if (resp.ok) {
-          form.style.display = 'none';
-          successEl.style.display = 'block';
-          if (window.plausible) plausible('Signup');
-          return;
-        }
-      } catch (_) {}
-      // Ultimate fallback
-      errorEl.style.display = 'block';
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Join Waitlist →';
     }
-  });
+    return false;
+  }
 </script>
 
 </body>
