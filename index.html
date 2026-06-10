@@ -299,7 +299,7 @@
     <!-- Signup form -->
     <div class="signup">
       <h3>Get $10 off + free bonus pack on launch day</h3>
-      <form id="signup-form" action="https://api.stealthserver.dev/signup" method="POST">
+      <form id="signup-form" method="POST">
         <input type="email" name="email" placeholder="you@email.com" required>
         <input type="hidden" name="_subject" value="Freelance Hub — Waitlist Signup">
         <input type="hidden" name="source" value="landing-page">
@@ -498,21 +498,52 @@
     submitBtn.textContent = 'Submitting...';
     errorEl.style.display = 'none';
 
+    const email = form.querySelector('input[type="email"]').value.trim();
+    if (!email) {
+      errorEl.textContent = 'Please enter your email.';
+      errorEl.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Join Waitlist →';
+      return;
+    }
+
     try {
-      const resp = await fetch(form.action, {
+      // Try local waitlist server first (works when accessed from WSL/VPS)
+      const resp = await fetch('http://localhost:3456/signup', {
         method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
+        body: JSON.stringify({ email, source: 'landing-page' }),
+        headers: { 'Content-Type': 'application/json' }
       });
       if (resp.ok) {
         form.style.display = 'none';
         successEl.style.display = 'block';
-        // Optional: track conversion for analytics
         if (window.plausible) plausible('Signup');
-      } else {
-        throw new Error('Form submission failed');
+        return;
       }
+      throw new Error('Local server unavailable');
     } catch (err) {
+      // Fallback: create a GitHub issue using the public API
+      try {
+        const resp = await fetch('https://api.github.com/repos/akwsa/freelance-hub-landing/issues', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/vnd.github.v3+json'
+          },
+          body: JSON.stringify({
+            title: `[SIGNUP] ${email}`,
+            body: `New waitlist signup\n\n**Email:** ${email}\n**Source:** landing-page\n**Time:** ${new Date().toISOString()}`,
+            labels: ['waitlist']
+          })
+        });
+        if (resp.ok) {
+          form.style.display = 'none';
+          successEl.style.display = 'block';
+          if (window.plausible) plausible('Signup');
+          return;
+        }
+      } catch (_) {}
+      // Ultimate fallback
       errorEl.style.display = 'block';
       submitBtn.disabled = false;
       submitBtn.textContent = 'Join Waitlist →';
