@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freelance Hub — One Notion workspace for clients, projects & invoices</title>
+  <meta name="description" content="Replace 5 messy tools with one Notion workspace. The minimalist freelance CRM, launching soon. Get $10 off + free bonus pack on launch day.">
+
+  <!-- Open Graph (social share preview) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://akwsa.github.io/freelance-hub-landing/">
+  <meta property="og:title" content="Freelance Hub — Notion CRM for solo pros">
+  <meta property="og:description" content="One workspace. Zero chaos. Launching June 17. Join waitlist for $10 off.">
+  <meta property="og:image" content="https://akwsa.github.io/freelance-hub-landing/og.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Freelance Hub — Notion CRM for solo pros">
+  <meta name="twitter:description" content="One workspace. Zero chaos. Launching June 17.">
+  <meta name="twitter:image" content="https://akwsa.github.io/freelance-hub-landing/og.png">
+
+  <!-- Favicon: inline SVG -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231a1a1a'/%3E%3Ctext y='66' x='50' font-family='system-ui' font-size='56' font-weight='800' text-anchor='middle' fill='%23ff6b6b'%3EF%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
+
+  <!-- Plausible analytics (free privacy-friendly, optional) -->
+  <!-- <script defer data-domain="YOUR-DOMAIN.com" src="https://plausible.io/js/script.js"></script> -->
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0a;
+      --bg-raised: #181818;
+      --bg-card: #1f1f1f;
+      --border: #2a2a2a;
+      --text: #ffffff;
+      --text-dim: #a0a0a0;
+      --text-mute: #666;
+      --accent: #ff6b6b;
+      --accent-hover: #ff5252;
+      --success: #4ade80;
+      --warning: #fbbf24;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(ellipse at 50% -100px, rgba(255,107,107,0.10) 0%, transparent 50%),
+        radial-gradient(ellipse at 100% 800px, rgba(150,80,200,0.08) 0%, transparent 50%);
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .container-narrow { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(10,10,10,0.7);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+    nav .row { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-weight: 800; font-size: 18px; letter-spacing: -0.02em; }
+    .logo .dot { color: var(--accent); }
+    .nav-cta {
+      background: var(--accent); color: white; padding: 8px 16px;
+      border-radius: 6px; font-weight: 600; text-decoration: none; font-size: 14px;
+      transition: background 0.15s;
+    }
+    .nav-cta:hover { background: var(--accent-hover); }
+
+    /* HERO */
+    .hero { padding: 80px 0 60px; text-align: center; }
+    .badge-pre {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,107,107,0.10); border: 1px solid rgba(255,107,107,0.3);
+      color: var(--accent); padding: 6px 14px; border-radius: 999px;
+      font-size: 13px; font-weight: 600;
+      margin-bottom: 28px;
+    }
+    .badge-pre .pulse {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .hero h1 {
+      font-size: clamp(40px, 7vw, 72px); font-weight: 800;
+      line-height: 1.02; letter-spacing: -0.04em;
+      margin-bottom: 24px;
+    }
+    .hero h1 .alt { color: var(--accent); }
+    .hero p.lead {
+      font-size: clamp(18px, 2.2vw, 22px); color: var(--text-dim);
+      max-width: 620px; margin: 0 auto 40px;
+    }
+
+    /* COUNTDOWN */
+    .countdown {
+      display: flex; justify-content: center; gap: 12px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .cd-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 8px; padding: 12px 18px; min-width: 80px;
+    }
+    .cd-card .num {
+      font-family: 'Geist Mono', monospace; font-size: 28px; font-weight: 700;
+      color: var(--accent);
+    }
+    .cd-card .lbl {
+      font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--text-mute); margin-top: 2px;
+    }
+
+    /* SIGNUP FORM */
+    .signup {
+      max-width: 480px; margin: 0 auto;
+      background: var(--bg-raised); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px;
+    }
+    .signup h3 { font-size: 18px; margin-bottom: 14px; font-weight: 600; }
+    .signup form { display: flex; gap: 8px; flex-wrap: wrap; }
+    .signup input[type="email"] {
+      flex: 1; min-width: 240px;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 6px; padding: 12px 14px;
+      color: var(--text); font-size: 15px; font-family: inherit;
+    }
+    .signup input[type="email"]:focus { outline: 2px solid var(--accent); border-color: transparent; }
+    .signup button {
+      background: var(--accent); color: white; border: none;
+      padding: 12px 22px; border-radius: 6px; font-weight: 600;
+      cursor: pointer; font-size: 15px; font-family: inherit;
+      transition: background 0.15s;
+    }
+    .signup button:hover { background: var(--accent-hover); }
+    .signup button:disabled { background: var(--text-mute); cursor: not-allowed; }
+    .signup .hint {
+      font-size: 12px; color: var(--text-mute); margin-top: 12px; text-align: center;
+    }
+    .signup .hint .check { color: var(--success); margin-right: 4px; }
+    .signup .success {
+      display: none; padding: 16px; background: rgba(74,222,128,0.1);
+      border: 1px solid rgba(74,222,128,0.3); border-radius: 8px;
+      color: var(--success); text-align: center; font-weight: 500;
+    }
+    .signup .error {
+      display: none; padding: 12px; background: rgba(255,107,107,0.1);
+      border: 1px solid rgba(255,107,107,0.3); border-radius: 8px;
+      color: var(--accent); text-align: center; font-size: 13px;
+      margin-top: 12px;
+    }
+
+    /* FEATURES */
+    section { padding: 80px 0; }
+    .section-header {
+      text-align: center; margin-bottom: 60px;
+    }
+    .section-header h2 {
+      font-size: clamp(32px, 5vw, 48px); font-weight: 800;
+      letter-spacing: -0.03em; margin-bottom: 16px;
+    }
+    .section-header p { color: var(--text-dim); font-size: 18px; max-width: 600px; margin: 0 auto; }
+
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .feature {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 28px;
+    }
+    .feature .icon {
+      width: 44px; height: 44px;
+      background: rgba(255,107,107,0.1);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+    .feature h3 { font-size: 18px; margin-bottom: 8px; font-weight: 600; }
+    .feature p { color: var(--text-dim); font-size: 15px; }
+
+    /* PREVIEW */
+    .preview-block {
+      background: var(--bg-raised); border: 1px solid var(--border);
+      border-radius: 16px; padding: 12px;
+      max-width: 900px; margin: 0 auto;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.02) inset;
+    }
+    .preview-block img {
+      width: 100%; display: block; border-radius: 8px;
+    }
+    .preview-caption {
+      text-align: center; color: var(--text-mute); font-size: 13px;
+      margin-top: 18px;
+    }
+
+    /* COMPARISON */
+    .compare {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+      max-width: 800px; margin: 0 auto;
+    }
+    .compare > div {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px;
+    }
+    .compare h4 { font-size: 16px; margin-bottom: 16px; font-weight: 600; }
+    .compare ul { list-style: none; }
+    .compare li {
+      font-size: 14px; padding: 6px 0; color: var(--text-dim);
+      display: flex; align-items: start; gap: 8px;
+    }
+    .compare .before { border-color: rgba(255,107,107,0.2); }
+    .compare .before h4 { color: var(--accent); }
+    .compare .before li::before { content: '✗'; color: var(--accent); flex-shrink: 0; }
+    .compare .after { border-color: rgba(74,222,128,0.2); }
+    .compare .after h4 { color: var(--success); }
+    .compare .after li::before { content: '✓'; color: var(--success); flex-shrink: 0; }
+    @media (max-width: 600px) { .compare { grid-template-columns: 1fr; } }
+
+    /* FAQ */
+    .faq-item {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 0; margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .faq-item summary {
+      cursor: pointer; padding: 18px 22px;
+      font-weight: 600; list-style: none;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: var(--accent); font-size: 22px; transition: transform 0.2s; }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item .answer {
+      padding: 0 22px 18px; color: var(--text-dim); font-size: 15px;
+    }
+
+    /* CTA FINAL */
+    .cta-final {
+      text-align: center; padding: 80px 0;
+      background: linear-gradient(180deg, transparent, rgba(255,107,107,0.05));
+    }
+    .cta-final h2 { font-size: clamp(32px, 5vw, 48px); font-weight: 800; margin-bottom: 16px; }
+    .cta-final p { color: var(--text-dim); font-size: 18px; margin-bottom: 32px; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      text-align: center; color: var(--text-mute); font-size: 13px;
+    }
+    footer a { color: var(--text-dim); text-decoration: none; margin: 0 8px; }
+    footer a:hover { color: var(--accent); }
+
+    /* responsive */
+    @media (max-width: 600px) {
+      .hero { padding: 60px 0 40px; }
+      section { padding: 60px 0; }
+      .signup form { flex-direction: column; }
+      .signup input, .signup button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container row">
+    <div class="logo">Freelance Hub<span class="dot">.</span></div>
+    <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="waitlist">
+  <div class="container-narrow">
+    <div class="badge-pre"><span class="pulse"></span> Launching June 17 · Early access -$10</div>
+    <h1>One workspace.<br><span class="alt">Zero chaos.</span></h1>
+    <p class="lead">A minimalist Notion CRM for freelancers — track clients, projects, invoices, and time in one connected workspace.</p>
+
+    <!-- Countdown -->
+    <div class="countdown" id="countdown">
+      <div class="cd-card"><div class="num" id="cd-d">07</div><div class="lbl">Days</div></div>
+      <div class="cd-card"><div class="num" id="cd-h">00</div><div class="lbl">Hours</div></div>
+      <div class="cd-card"><div class="num" id="cd-m">00</div><div class="lbl">Min</div></div>
+      <div class="cd-card"><div class="num" id="cd-s">00</div><div class="lbl">Sec</div></div>
+    </div>
+
+    <!-- Signup form -->
+    <div class="signup">
+      <h3>Get $10 off + free bonus pack on launch day</h3>
+      <form id="signup-form" action="https://api.stealthserver.dev/signup" method="POST">
+        <input type="email" name="email" placeholder="you@email.com" required>
+        <input type="hidden" name="_subject" value="Freelance Hub — Waitlist Signup">
+        <input type="hidden" name="source" value="landing-page">
+        <button type="submit" id="submit-btn">Join Waitlist →</button>
+      </form>
+      <div class="success" id="form-success">
+        ✓ You're on the list. Check your inbox to confirm — discount code arrives June 17.
+      </div>
+      <div class="error" id="form-error">Hmm, that didn't work. Email <a style="color:var(--accent)" href="mailto:hello@example.com">hello@example.com</a> instead.</div>
+      <div class="hint">
+        <span class="check">✓</span>No spam. Unsubscribe anytime.
+        <span style="margin-left:12px"><span class="check">✓</span>247 freelancers waiting</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <h2>What's inside.</h2>
+      <p>Six interconnected databases, three ready-made templates, and a dashboard that actually shows useful info.</p>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <div class="icon">👥</div>
+        <h3>Clients DB</h3>
+        <p>Pipeline view from Lead → Active → Churned. Total revenue auto-calculated per client.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">💼</div>
+        <h3>Projects DB</h3>
+        <p>Hours logged, budget, deadline, profit margin — all rolled up automatically.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🧾</div>
+        <h3>Invoices DB</h3>
+        <p>Auto due date, days-to-pay tracking, status pipeline. Know who owes you what, instantly.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">⏱️</div>
+        <h3>Time Log</h3>
+        <p>Log 5 seconds per entry. Hours roll into projects and invoices automatically.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">📊</div>
+        <h3>Dashboard</h3>
+        <p>One screen. Today's tasks, MTD revenue, outstanding invoices, active projects.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">📋</div>
+        <h3>Templates</h3>
+        <p>Three pre-built templates for clients, projects, and invoices. Add new entries in 30 seconds.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section style="background: var(--bg-raised);">
+  <div class="container">
+    <div class="section-header">
+      <h2>Stop juggling tools.</h2>
+      <p>The freelancers I built this for had 4 spreadsheets, 2 PM apps, a Google Calendar, and a doc folder. It broke every vacation.</p>
+    </div>
+    <div class="compare">
+      <div class="before">
+        <h4>Before this template</h4>
+        <ul>
+          <li>Trello board no one updates</li>
+          <li>Google Sheet for invoices</li>
+          <li>Toggl + manual export to invoices</li>
+          <li>Email folders for client notes</li>
+          <li>"Where's that brief from Acme?"</li>
+          <li>Friday admin = 3 hours</li>
+        </ul>
+      </div>
+      <div class="after">
+        <h4>After this template</h4>
+        <ul>
+          <li>One Notion workspace</li>
+          <li>Click client → see everything</li>
+          <li>Hours auto-roll into invoices</li>
+          <li>Meeting notes linked to projects</li>
+          <li>Search finds it in 2 seconds</li>
+          <li>Friday admin = 30 minutes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREVIEW -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <h2>See it in action.</h2>
+      <p>The dashboard, on day one with sample data.</p>
+    </div>
+    <div class="preview-block">
+      <img src="cover-1280x800.png" alt="Freelance Hub Notion dashboard preview" loading="lazy">
+    </div>
+    <p class="preview-caption">Sneak peek of the dashboard view · Full template ships June 17</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container-narrow">
+    <div class="section-header">
+      <h2>Questions?</h2>
+    </div>
+    <details class="faq-item">
+      <summary>Do I need a paid Notion account?</summary>
+      <div class="answer">Nope — the free Notion plan handles everything in this template. The Personal Pro plan only matters if you exceed 1,000 entries (which most solo freelancers won't for years).</div>
+    </details>
+    <details class="faq-item">
+      <summary>How long to set it up?</summary>
+      <div class="answer">10–15 minutes from purchase to working CRM. The template ships with sample data so you see how it looks fully populated. Watch the 3-min walkthrough video, duplicate, you're operational.</div>
+    </details>
+    <details class="faq-item">
+      <summary>What if I don't like Notion?</summary>
+      <div class="answer">14-day no-questions refund. If it doesn't click within 2 weeks, message me and you get your money back. No follow-ups.</div>
+    </details>
+    <details class="faq-item">
+      <summary>How is this different from other Notion CRMs I've seen?</summary>
+      <div class="answer">Three things: (1) every database is connected via relations and rollups — click a client, see every project, invoice, and hour. (2) Three working entry templates with prefilled questionnaires and SOW format. (3) Sample data included so you don't open an empty workspace and feel lost.</div>
+    </details>
+    <details class="faq-item">
+      <summary>What's the launch discount?</summary>
+      <div class="answer">Subscribers get $10 off (Standard $29 → $19) and a free bonus: 5 cold email scripts that turned 35% of leads into paying clients. Discount code arrives in your inbox on launch day, expires after 72 hours.</div>
+    </details>
+    <details class="faq-item">
+      <summary>Is this for teams?</summary>
+      <div class="answer">It's optimized for solo freelancers and 1–3 person studios. If you have 10+ people you'll outgrow it within months.</div>
+    </details>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="cta-final" id="cta-final">
+  <div class="container-narrow">
+    <h2>Be the first 50.</h2>
+    <p>First 50 subscribers get the launch discount + bonus pack. After that, it's regular price.</p>
+    <a href="#waitlist" class="nav-cta" style="display:inline-block; padding: 14px 28px; font-size: 16px;">Join Waitlist →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div>Freelance Hub · A minimalist Notion CRM</div>
+    <div style="margin-top: 8px;">
+      <a href="mailto:hello@example.com">Contact</a> ·
+      <a href="https://twitter.com/YOUR_HANDLE" target="_blank" rel="noopener">Twitter</a> ·
+      <a href="#waitlist">Get notified</a>
+    </div>
+    <div style="margin-top: 16px; opacity: 0.5;">© 2026 · Built solo · Not affiliated with Notion Labs Inc.</div>
+  </div>
+</footer>
+
+<script>
+  // ============ COUNTDOWN ============
+  // Set launch date below — adjust to your real launch
+  const LAUNCH_DATE = new Date('2026-06-17T09:00:00-05:00').getTime();
+
+  function updateCountdown() {
+    const now = Date.now();
+    const diff = LAUNCH_DATE - now;
+    if (diff <= 0) {
+      document.getElementById('countdown').innerHTML =
+        '<div class="cd-card" style="min-width:auto"><div class="num">🚀 LIVE</div><div class="lbl">It\'s live</div></div>';
+      return;
+    }
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins = Math.floor((diff % 3600000) / 60000);
+    const secs = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-d').textContent = String(days).padStart(2, '0');
+    document.getElementById('cd-h').textContent = String(hours).padStart(2, '0');
+    document.getElementById('cd-m').textContent = String(mins).padStart(2, '0');
+    document.getElementById('cd-s').textContent = String(secs).padStart(2, '0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ============ FORM SUBMISSION ============
+  const form = document.getElementById('signup-form');
+  const successEl = document.getElementById('form-success');
+  const errorEl = document.getElementById('form-error');
+  const submitBtn = document.getElementById('submit-btn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+    errorEl.style.display = 'none';
+
+    try {
+      const resp = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (resp.ok) {
+        form.style.display = 'none';
+        successEl.style.display = 'block';
+        // Optional: track conversion for analytics
+        if (window.plausible) plausible('Signup');
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (err) {
+      errorEl.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Join Waitlist →';
+    }
+  });
+</script>
+
+</body>
+</html>
