@@ -541,15 +541,15 @@
 </footer>
 
 <script>
-  // === Polar.sh checkout links — auto-deployed via API === //
-  const POLAR_LINKS = {
-    pro:     'https://buy.polar.sh/polar_cl_Sxui6iocSZqANZodzvRlJwOCDpsigrqEU554A0uyF6w',
-    scripts: 'https://buy.polar.sh/polar_cl_gKiCZ0KhcuKkUxmXNNGTMUNSA2lKnpiZz4QuQ2Laa7c',
-    leads:   'https://buy.polar.sh/polar_cl_Qcj885ZL71wSz61WSW7TV5MbfkJr7T5mOwBsS1AHAYS',
+  // === Lemon Squeezy checkout links === //
+  const LS_LINKS = {
+    pro:     'https://autosstudio.lemonsqueezy.com/checkout/buy/266ad57f-656d-4fbb-ae93-854c53fa8b05',
+    scripts: 'https://autosstudio.lemonsqueezy.com/checkout/buy/d149b0b6-25aa-4717-af03-2a3d0401526c',
+    leads:   'https://autosstudio.lemonsqueezy.com/checkout/buy/ad34232d-df6b-4dec-b87e-286552fa32bc',
   };
 
   function buyNow(tier) {
-    const url = POLAR_LINKS[tier];
+    const url = LS_LINKS[tier];
     if (url) {
       window.open(url, '_blank', 'noopener');
     } else {
