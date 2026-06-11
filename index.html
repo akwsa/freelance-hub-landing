@@ -311,41 +311,7 @@
     </div>
 
     <div class="pricing">
-      <!-- STANDARD -->
-      <div class="plan">
-        <div class="name">Standard</div>
-        <div class="price"><span class="cur">$</span>29<span class="period"> · once</span></div>
-        <ul>
-          <li>Full Notion CRM workspace</li>
-          <li>6 connected databases</li>
-          <li>3 pre-built templates</li>
-          <li>Sample data included</li>
-          <li>3-min walkthrough video</li>
-          <li>Free updates</li>
-          <li>14-day refund</li>
-        </ul>
-        <a href="#" class="buy-btn" onclick="return buyNow('standard')">Buy Standard →</a>
-        <div class="guarantee">🛡️ 14-day money-back guarantee</div>
-      </div>
-
-      <!-- PRO (BEST VALUE) -->
-      <div class="plan popular">
-        <div class="name">Pro Bundle</div>
-        <div class="price"><span class="cur">$</span>49<span class="period"> · once</span></div>
-        <div class="savings">Save $28 vs buying separately</div>
-        <ul>
-          <li>Everything in Standard</li>
-          <li><strong>5 Cold Email Scripts</strong> ($19 value)</li>
-          <li><strong>1,000 SaaS Founder Leads</strong> ($29 value)</li>
-          <li>GDPR-compliant lead database</li>
-          <li>Personalization cheat sheet</li>
-          <li>Priority email support</li>
-        </ul>
-        <a href="#" class="buy-btn" onclick="return buyNow('pro')">Buy Pro Bundle →</a>
-        <div class="guarantee">🛡️ 14-day money-back guarantee</div>
-      </div>
-
-      <!-- ADD-ONS -->
+      <!-- COLD EMAIL SCRIPTS ($19) -->
       <div class="plan">
         <div class="name">Cold Email Scripts</div>
         <div class="price"><span class="cur">$</span>19<span class="period"> · once</span></div>
@@ -358,6 +324,40 @@
           <li>Anti-spam checklist</li>
         </ul>
         <a href="#" class="buy-btn ghost" onclick="return buyNow('scripts')">Buy Scripts →</a>
+        <div class="guarantee">🛡️ 14-day money-back guarantee</div>
+      </div>
+
+      <!-- FREELANCE HUB PRO BUNDLE ($49) - BEST VALUE -->
+      <div class="plan popular">
+        <div class="name">Freelance Hub Pro</div>
+        <div class="price"><span class="cur">$</span>49<span class="period"> · once</span></div>
+        <div class="savings">Save $28 vs buying separately</div>
+        <ul>
+          <li><strong>Full Notion CRM</strong> workspace</li>
+          <li>9 connected databases + 3 templates</li>
+          <li>Sample data + walkthrough video</li>
+          <li><strong>5 Cold Email Scripts</strong> ($19)</li>
+          <li><strong>1,000 SaaS Lead DB</strong> ($29)</li>
+          <li>Income forecast + tax tracker bonuses</li>
+          <li>Priority email support</li>
+        </ul>
+        <a href="#" class="buy-btn" onclick="return buyNow('pro')">Buy Pro Bundle →</a>
+        <div class="guarantee">🛡️ 14-day money-back guarantee</div>
+      </div>
+
+      <!-- SAAS LEAD DB ($29) -->
+      <div class="plan">
+        <div class="name">SaaS Lead Database</div>
+        <div class="price"><span class="cur">$</span>29<span class="period"> · once</span></div>
+        <ul>
+          <li>1,000 verified B2B SaaS contacts</li>
+          <li>Founders, CEOs, indie hackers</li>
+          <li>CSV + JSON formats</li>
+          <li>GDPR-compliance guide</li>
+          <li>Filter formulas (Excel/Sheets)</li>
+          <li>250-lead sample preview</li>
+        </ul>
+        <a href="#" class="buy-btn ghost" onclick="return buyNow('leads')">Buy Lead DB →</a>
         <div class="guarantee">🛡️ 14-day money-back guarantee</div>
       </div>
     </div>
@@ -541,26 +541,24 @@
 </footer>
 
 <script>
-  // === BUY BUTTONS — update URLs when LS products go live === //
-  const LS_STORE = 'https://autosstudio.lemonsqueezy.com';
-  const LS_LINKS = {
-    standard: '',  // e.g. '/b/freelance-hub-standard'
-    pro: '',       // e.g. '/b/freelance-hub-pro'
-    scripts: '',   // e.g. '/b/cold-email-scripts'
+  // === Polar.sh checkout links — auto-deployed via API === //
+  const POLAR_LINKS = {
+    pro:     'https://buy.polar.sh/polar_cl_Sxui6iocSZqANZodzvRlJwOCDpsigrqEU554A0uyF6w',
+    scripts: 'https://buy.polar.sh/polar_cl_gKiCZ0KhcuKkUxmXNNGTMUNSA2lKnpiZz4QuQ2Laa7c',
+    leads:   'https://buy.polar.sh/polar_cl_Qcj885ZL71wSz61WSW7TV5MbfkJr7T5mOwBsS1AHAYS',
   };
 
   function buyNow(tier) {
-    const url = LS_LINKS[tier];
+    const url = POLAR_LINKS[tier];
     if (url) {
-      window.open(LS_STORE + url, '_blank');
+      window.open(url, '_blank', 'noopener');
     } else {
-      // Fallback: notify while store is being set up
       const btn = event?.target;
       if (btn) {
         btn.textContent = 'Store setup in progress...';
         btn.style.opacity = '0.6';
         setTimeout(() => {
-          btn.textContent = tier === 'standard' ? 'Buy Standard →' :
+          btn.textContent = tier === 'leads' ? 'Buy Lead DB →' :
                             tier === 'pro' ? 'Buy Pro Bundle →' : 'Buy Scripts →';
           btn.style.opacity = '1';
         }, 2000);
